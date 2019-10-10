@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<!-- Main -->
+<div id="main" class="wrapper style1">
+	<div class="container">
+		<header class="major">
+			<h2>{{ page.class_name }}</h2>
+		</header>
+		<div class="row gtr-150">
+			<div class="col-8 col-12-medium">
+
+				<!-- Content -->
+					<section id="content">
+						{{ content }}
+					</section>
+
+			</div>
+			<div class="col-4 col-12-medium">
+
+				<!-- Sidebar -->
+					<section id="sidebar">
+						{% if page.scrum %}
+						{% include scrum_class.html %}
+						{% endif %}
+						{% if page.lean %}
+						{% include lean_class.html %}
+						{% endif %}
+						{% if page.wcd %}
+						{% include wcd_class.html %}
+						{% endif %}
+					</section>
+
+			</div>
+		</div>
+	</div>
+</div>
+
