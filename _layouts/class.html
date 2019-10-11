@@ -20,15 +20,29 @@ layout: default
 
 				<!-- Sidebar -->
 					<section id="sidebar">
-						{% if page.scrum %}
-						{% include scrum_class.html %}
-						{% endif %}
-						{% if page.lean %}
-						{% include lean_class.html %}
-						{% endif %}
-						{% if page.wcd %}
-						{% include wcd_class.html %}
-						{% endif %}
+						<p>Interested? Sign Up!</p>
+						<h4>Class Schedule</h4>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>Date</th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for cl in site.classlist %}
+									{% if cl.class == page.class_file %}
+									<tr>
+										<td colspan="2">{{ cl.date | date_to_string }}</td>
+										<td><a href="#" class="button small">SIGNUP!</a></td>
+									</tr>
+									{% endif %}
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
 					</section>
 
 			</div>
