@@ -35,7 +35,7 @@ layout: default
 									{% for cl in site.classlist %}
 									{% if cl.class == page.class_file %}
 									<tr>
-										<td colspan="2">{{ cl.date | date_to_string }}</td>
+										<td colspan="2">{{ cl.start_date | date_to_string }}</td>
 										<td><a href="#" class="button small">SIGNUP!</a></td>
 									</tr>
 									{% endif %}
