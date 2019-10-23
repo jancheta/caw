@@ -32,21 +32,17 @@ layout: default
 									</tr>
 								</thead>
 								<tbody>
-									{% assign valid_class = false %}
-									{% assign sorted = site.classlist | sort: 'start_date' %}
+									{% assign valid_class = false %}{% assign sorted = site.classlist | sort: 'start_date' %}
 									{% for cl in sorted %}
-									{% if cl.class == page.class_file %}
-									{% if site.time <= cl.start_date %}
+									{% if cl.class == page.class_file %}{% if site.time <= cl.start_date %}
 									{% assign valid_class = true %}
 									<tr>
-										<td colspan="2">{{ cl.start_date | date:'%d' }} & {{ cl.end_date | date:'%d' }} {{ cl.start_date | date:'%b %Y' }}</td>
+										<td colspan="2">{{ cl.start_date | date:'%d' }} - {{ cl.end_date | date:'%d' }} {{ cl.start_date | date:'%b %Y' }}</td>
 										<td><a href="#" class="button small">SIGNUP!</a></td>
 									</tr>
-									{% endif %}
-									{% endif %}
+									{% endif %}{% endif %}
 									{% endfor %}
-									{% if valid_class == false %}
-									{% if page.class_file == 'lean' %}
+									{% if valid_class == false %}{% if page.class_file == 'lean' %}
 									<tr>
 										<td colspan="3">Class available upon request.</td>
 									</tr>
@@ -58,8 +54,7 @@ layout: default
 									<tr>
 										<td colspan="3">No classes left this fiscal year.</td>
 									</tr>
-									{% endif %}
-									{% endif %}
+									{% endif %}{% endif %}
 								</tbody>
 							</table>
 						</div>
