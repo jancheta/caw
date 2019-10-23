@@ -1,2 +1,3 @@
 collections:
   classlist:
+exclude: ['*.sublime-*', 'Gemfile*', '*.txt']
