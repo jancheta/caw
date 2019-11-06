@@ -50,44 +50,25 @@ title: Center for Adaptive Warfighting
 
 <!-- Two -->
 <section id="two" class="wrapper style1 special fade-up">
+	<link rel="stylesheet" type="text/css" href="assets/css/sched.css">
 	<div class="container">
 		<header class="major">
-			<h2>Accumsan sed tempus adipiscing blandit</h2>
-			<p>Iaculis ac volutpat vis non enim gravida nisi faucibus posuere arcu consequat</p>
+			<h2>Available Classes</h2>
+			{% assign range_cl = site.classlist | where_exp:"cls", "cls.start_date >= site.time" %}
+			<p>Filter: <input type="date" name="start" value="{{ site.time | date:'%Y-%m-%d'}}" min="{{range_cl.first.start_date | date:'%Y-%m-%d' }}" max="{{range_cl.last.end_date | date:'%Y-%m-%d' }}"> to <input type="date" name="end" value="{{range_cl.last.end_date | date:'%Y-%m-%d' }}" min="{{range_cl.first.start_date | date:'%Y-%m-%d' }}" max="{{range_cl.last.end_date | date:'%Y-%m-%d' }}"></p>
 		</header>
 		<div class="box alt">
-			<div class="row gtr-uniform">
-				<section class="col-4 col-6-medium col-12-xsmall">
-					<span class="icon solid alt major fa-chart-area"></span>
-					<h3>Ipsum sed commodo</h3>
-					<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-				</section>
-				<section class="col-4 col-6-medium col-12-xsmall">
-					<span class="icon solid alt major fa-comment"></span>
-					<h3>Eleifend lorem ornare</h3>
-					<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-				</section>
-				<section class="col-4 col-6-medium col-12-xsmall">
-					<span class="icon solid alt major fa-flask"></span>
-					<h3>Cubilia cep lobortis</h3>
-					<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-				</section>
-				<section class="col-4 col-6-medium col-12-xsmall">
-					<span class="icon solid alt major fa-paper-plane"></span>
-					<h3>Non semper interdum</h3>
-					<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-				</section>
-				<section class="col-4 col-6-medium col-12-xsmall">
-					<span class="icon solid alt major fa-file"></span>
-					<h3>Odio laoreet accumsan</h3>
-					<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-				</section>
-				<section class="col-4 col-6-medium col-12-xsmall">
-					<span class="icon solid alt major fa-lock"></span>
-					<h3>Massa arcu accumsan</h3>
-					<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-				</section>
-			</div>
+			{% if range_cl.size > 0 %}
+			<ul class="sched">
+			{% for cl in range_cl %}
+				<li>
+					{{ cl.class | upcase }}: {{ cl.start_date | date:'%d' }} - {{ cl.end_date | date:'%d' }} {{ cl.start_date | date:'%b %Y' }}
+				</li>
+			{%endfor%}
+			</ul>
+			{%else%}
+			<p>Unfortunately, no classes are available for this date range.</p>
+			{%endif%}
 		</div>
 		<footer class="major">
 			<ul class="actions special">

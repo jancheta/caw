@@ -1,0 +1,22 @@
+ul.sched {
+	list-style: none;
+	display: grid;
+	grid-template-columns:repeat(auto-fit, minmax(200px , 1fr));
+	grid-gap: 20px;
+}
+
+ul.sched li {
+	/*box-sizing:border-box;*/
+	border:solid 2px #777; 
+	background:#ccc; 
+	padding:10px; 
+	text-align:center;
+	font-size:12px;
+	font-weight:bold;
+	/*width: 200px;*/
+	/*height: 200px;*/
+}
+
+.hide {
+	display:none;
+}
