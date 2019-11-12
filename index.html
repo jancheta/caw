@@ -62,7 +62,17 @@ title: Center for Adaptive Warfighting
 			<ul class="sched">
 			{% for cl in range_cl %}
 				<li>
-					{{ cl.class | upcase }}: {{ cl.start_date | date:'%d' }} - {{ cl.end_date | date:'%d' }} {{ cl.start_date | date:'%b %Y' }}
+					{% if cl.class == 'scrum' %}
+					<span class="image fit"><img src="images/scrum_sched.jpg" alt="" /></span>
+					<div>Military Scrum Master
+					{% elsif cl.class == 'wcd' %}
+					<span class="image fit"><img src="images/wcd_sched.jpg" alt="" /></span>
+					<div>Warfighter Centered Design
+					{% elsif cl.class == 'lean' %}
+					<span class="image fit"><img src="images/lean_sched.jpg" alt="" /></span>
+					<div>Lean Startup - Mission Acceleration
+					{%endif%}
+					<br>{{ cl.start_date | date:'%B' }} {{ cl.start_date | date:'%d' }} - {{ cl.end_date | date:'%d' }}, {{ cl.start_date | date:'%Y' }}</div>
 				</li>
 			{%endfor%}
 			</ul>
